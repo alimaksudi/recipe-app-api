@@ -13,8 +13,17 @@ WORKDIR /app
 # Copy the requirements file to the working directory
 COPY requirements.txt .
 
+# Copy the development requirements file to the working directory
+COPY requirements.dev.txt .
+
 # Install the project dependencies
 RUN pip install --no-cache-dir -r requirements.txt  
+
+# ARG instruction defines a build-time variable
+ARG DEV=false # default value is false
+
+# Install the development dependencies
+RUN if [ "$DEV" = "true" ]; then pip install --no-cache-dir -r requirements.dev.txt; fi
 
 # Copy the project files to the working directory
 COPY . .
@@ -34,6 +43,8 @@ USER django-user
 
 # Set the command to run the Django development server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+
 
 
 

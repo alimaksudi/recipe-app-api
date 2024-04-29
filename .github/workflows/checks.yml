@@ -28,15 +28,15 @@ jobs:
       - name: Lint
         run: docker compose run web flake8
 
-  build:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+  # build:
+  # runs-on: ubuntu-latest
+  # steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v2
 
-    # Add your build and test steps here
-    - name: Run tests
-      run: |
-        # Add your test commands here
+  #   # Add your build and test steps here
+  #   - name: Run tests
+  #     run: |
+  #       # Add your test commands here
 
     # Add any additional steps or jobs as needed
